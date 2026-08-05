@@ -1,0 +1,90 @@
+// Prisma Schema for NextGen Tech
+// Models: User, Lead, PortfolioProject, Testimonial, BlogPost
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Lead {
+  id               String   @id @default(cuid())
+  name             String
+  email            String
+  phone            String?
+  serviceInterested String?
+  message          String
+  honeypot         String?  // Hidden field for spam detection
+  read             Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([read])
+}
+
+model PortfolioProject {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  description     String
+  longDescription String?  @db.Text
+  imageUrl        String?
+  category        String   // Maps to service slug
+  tags            String[] // Array of tags
+  featured        Boolean  @default(false)
+  liveUrl         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([category])
+  @@index([featured])
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  clientName String
+  company    String
+  role       String?
+  content    String   @db.Text
+  rating     Int      @default(5)
+  avatarUrl  String?
+  featured   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  @@index([featured])
+}
+
+model BlogPost {
+  id         String   @id @default(cuid())
+  title      String
+  slug       String   @unique
+  excerpt    String?
+  content    String   @db.Text
+  coverImage String?
+  published  Boolean  @default(false)
+  author     String   @default("NextGen Tech")
+  tags       String[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([published])
+  @@index([slug])
+}
