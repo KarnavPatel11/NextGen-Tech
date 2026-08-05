@@ -131,15 +131,15 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-foreground-dim shrink-0" />
                 <a
-                  href="mailto:nextgentech22@gmail.com"
+                  href="mailto:nextgentech2112@gmail.com"
                   className="hover:text-foreground transition-colors"
                 >
-                  nextgentech22@gmail.com
+                  nextgentech2112@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-foreground-dim shrink-0" />
-                <span>+91 70411 80599</span> 
+                <span>+91 87800 50252</span> 
               </div>
             </div>
           </div>

@@ -21,14 +21,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "nextgentech22@gmail.com",
-    href: "mailto:nextgentech22@gmail.com",
+    value: "nextgentech2112@gmail.com",
+    href: "mailto:nextgentech2112@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 00000 00000",
-    href: "tel:+910000000000",
+    value: "+91 87800 50252",
+    href: "tel:+918780050252",
   },
   {
     icon: MapPin,

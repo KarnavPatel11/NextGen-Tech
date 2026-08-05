@@ -99,6 +99,7 @@ export default function ContactForm() {
     setErrorMessage("");
 
     try {
+      // Send via EmailJS (client-side)
       await emailjs.sendForm(
         "service_vpmhzej",
         "template_0mkma5j",
@@ -107,6 +108,25 @@ export default function ContactForm() {
           publicKey: "GSV5tLmd7tYLx80kW",
         }
       );
+
+      // Also send via server API to deliver to company Gmail
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            serviceInterested: formData.serviceInterested,
+            message: formData.message,
+            honeypot: formData.honeypot,
+          }),
+        });
+      } catch {
+        // Server email is best-effort; don't block success
+        console.warn("Server-side email notification failed (non-critical).");
+      }
 
       setStatus("success");
       setFormData({
