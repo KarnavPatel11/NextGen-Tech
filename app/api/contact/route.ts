@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
 import { sendContactNotification } from "@/lib/resend";
 
 // Simple rate limiting using in-memory map
@@ -42,7 +41,6 @@ export async function POST(request: NextRequest) {
 
     // Honeypot check — if filled, silently reject
     if (honeypot) {
-      // Return success to not tip off bots
       return NextResponse.json({ success: true });
     }
 
@@ -63,37 +61,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Store lead in database (graceful fallback if DB is not configured)
-    let leadId = null;
-    try {
-      const lead = await prisma.lead.create({
-        data: {
-          name,
-          email,
-          phone: phone || null,
-          serviceInterested: serviceInterested || null,
-          message,
-          honeypot: null,
-        },
-      });
-      leadId = lead.id;
-    } catch (dbError) {
-      console.warn("⚠️ Database not configured or unreachable — lead not saved to DB:", dbError);
-    }
-
-    // Send notification email
-    await sendContactNotification({
+    // Send notification email to company Gmail
+    const emailResult = await sendContactNotification({
       name,
       email,
       phone,
       service: serviceInterested,
       message,
     });
+    console.log("📧 Email result:", emailResult);
 
     return NextResponse.json({
       success: true,
       message: "Thank you! We'll be in touch within 24 hours.",
-      id: leadId,
     });
   } catch (error) {
     console.error("Contact form error:", error);
