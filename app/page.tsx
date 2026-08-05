@@ -153,9 +153,22 @@ function ContactFormSimple() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
+    serviceInterested: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const serviceOptions = [
+    "Digital Marketing",
+    "Social Media Marketing",
+    "Social Media Management",
+    "Web Development",
+    "App Development",
+    "AI Integration & Automation",
+    "Festival Poster & Logo Design",
+    "E-Commerce Solutions",
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -170,8 +183,26 @@ function ContactFormSimple() {
           publicKey: "GSV5tLmd7tYLx80kW",
         }
       );
+
+      // Also send via server API to deliver to company Gmail
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            serviceInterested: formData.serviceInterested,
+            message: formData.message,
+          }),
+        });
+      } catch {
+        console.warn("Server-side email notification failed (non-critical).");
+      }
+
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", serviceInterested: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
       console.error("FAILED...", err);
@@ -206,6 +237,32 @@ function ContactFormSimple() {
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className={inputClasses}
         />
+      </div>
+      <div>
+        <input
+          type="tel"
+          name="user_phone"
+          required
+          placeholder="Your Phone Number (e.g. +91 98765 43210)"
+          value={formData.phone}
+          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          className={inputClasses}
+        />
+      </div>
+      <div>
+        <select
+          name="service_interested"
+          value={formData.serviceInterested}
+          onChange={(e) => setFormData({ ...formData, serviceInterested: e.target.value })}
+          className={inputClasses}
+        >
+          <option value="">Select a Service...</option>
+          {serviceOptions.map((service) => (
+            <option key={service} value={service}>
+              {service}
+            </option>
+          ))}
+        </select>
       </div>
       <div>
         <textarea
