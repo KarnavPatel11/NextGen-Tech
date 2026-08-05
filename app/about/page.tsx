@@ -203,7 +203,7 @@ export default function AboutPage() {
             {values.map((value, i) => (
               <AnimatedSection key={value.title} delay={i * 0.1}>
                 <div className="card-base p-8 flex gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#1b1b1b] border border-card-border flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-background-secondary border border-card-border flex items-center justify-center shrink-0">
                     <value.icon size={24} className="text-foreground-muted" />
                   </div>
                   <div>

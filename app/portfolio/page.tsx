@@ -16,33 +16,27 @@ const categories = [
 
 const projects = [
   {
-    title: "TradeFXBook",
-    description:
-      "AI-powered trading journal SaaS that lets traders sync trades, journal setups, backtest ideas, and analyze PnL.",
-    category: "Web Development",
-    tags: ["SaaS Product", "AI Automation", "Concept Build"],
-    image: "/images/tradefxbook.png",
-    link: "https://trade-fx-book.vercel.app/",
+    title: "Retail Automation Suite",
+    description: "Concept Project — AI workflows for local businesses",
+    category: "AI Integration & Automation",
+    tags: ["AI Automation", "Digitalization", "Workflow Prototype"],
+    image: "/images/retail-automation.png",
   },
   {
-    title: "Clothing Shop",
-    description:
-      "Modern D2C fashion e-commerce storefront featuring premium fabrics & trending designs with seamless checkout experience.",
+    title: "D2C Storefront System",
+    description: "Concept Project — e-commerce growth foundation",
     category: "E-Commerce",
-    tags: ["E-Commerce", "Next.js", "Storefront Concept"],
-    image: "/images/clothingshop.png",
-    link: "https://clothingshop1.netlify.app/",
+    tags: ["E-Commerce", "Digital Marketing", "Storefront Concept"],
+    image: "/images/d2c-storefront.png",
   },
   {
-    title: "Krishi Manager App",
+    title: "TechVista Platform Redesign",
     description:
-      "Smart agriculture & farm management dashboard helping farmers track crop yields, seasonal expenses, and real-time net profit analytics.",
-    category: "App Development",
-    tags: ["AgriTech", "Analytics", "React App"],
-    image: "/images/krishi-manager.png",
-    link: "https://farminganalyst.netlify.app/",
+      "Complete redesign of a SaaS analytics platform with a new design system, improved UX, and 40% faster load times.",
+    category: "Web Development",
+    tags: ["Next.js", "React", "Design System"],
+    image: "/images/techvista-platform.png",
   },
-
   {
     title: "GrowthPulse Social Campaign",
     description:
@@ -59,16 +53,6 @@ const projects = [
     tags: ["LLM", "Chatbot", "Automation"],
     image: "/images/kSNWwZnlXmObrxxkf8A0ATWAqUM.png",
   },
-
-  {
-    title: "Quantum SEO & Content Strategy",
-    description:
-      "Comprehensive SEO overhaul that increased organic traffic by 250% and improved domain authority from 25 to 55.",
-    category: "Digital Marketing",
-    tags: ["SEO", "Content", "Analytics"],
-    video: "/project.mp4",
-  },
-
   {
     title: "Prism Brand Launch",
     description:
@@ -76,7 +60,6 @@ const projects = [
     category: "Social Media Marketing",
     tags: ["Brand Strategy", "Influencers", "TikTok"],
   },
-
 ];
 
 export default function PortfolioPage() {

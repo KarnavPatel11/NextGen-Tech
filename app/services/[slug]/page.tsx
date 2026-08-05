@@ -55,7 +55,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <section className="max-w-5xl mx-auto px-6 mb-16">
         <AnimatedSection>
           <div className="flex items-start gap-6 mb-8">
-            <div className="w-16 h-16 rounded-2xl bg-[#1b1b1b] border border-card-border flex items-center justify-center shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-background-secondary border border-card-border flex items-center justify-center shrink-0">
               <ServiceIcon name={service.iconName} size={32} className="text-foreground-muted" />
             </div>
             <div>

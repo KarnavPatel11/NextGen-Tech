@@ -84,37 +84,53 @@ interface FeaturedProject {
   client: string;
   type: string;
   image?: string;
+  video?: string;
   link?: string;
 }
 
 const featuredProjects: FeaturedProject[] = [
   {
-    title: "Retail Automation Suite",
-    description: "Concept Project — AI workflows for local businesses",
-    tags: ["AI Automation", "Digitalization", "Workflow Prototype"],
-    year: "2026",
-    client: "NextGen Tech",
-    type: "Automation Demo",
-    image: "/images/retail-automation.png",
-  },
-  {
-    title: "D2C Storefront System",
-    description: "Concept Project — e-commerce growth foundation",
-    tags: ["E-Commerce", "Digital Marketing", "Storefront Concept"],
-    year: "2026",
-    client: "NextGen Tech",
-    type: "Growth System",
-    image: "/images/d2c-storefront.png",
-  },
-  {
-    title: "TechVista Platform Redesign",
+    title: "TradeFXBook",
     description:
-      "Complete redesign of a SaaS analytics platform with a new design system, improved UX, and 40% faster load times.",
-    tags: ["Next.js", "React", "Design System"],
+      "AI-powered trading journal SaaS that lets traders sync trades, journal setups, backtest ideas, and analyze PnL.",
+    tags: ["SaaS Product", "AI Automation", "Concept Build"],
     year: "2026",
-    client: "TechVista Inc.",
-    type: "Client Build",
-    image: "/images/techvista-platform.png",
+    client: "TradeFXBook",
+    type: "SaaS Product",
+    image: "/images/tradefxbook.png",
+    link: "https://trade-fx-book.vercel.app/",
+  },
+  {
+    title: "Clothing Shop",
+    description:
+      "Modern D2C fashion e-commerce storefront featuring premium fabrics & trending designs with seamless checkout experience.",
+    tags: ["E-Commerce", "Next.js", "Storefront Concept"],
+    year: "2026",
+    client: "Clothing Shop",
+    type: "E-Commerce",
+    image: "/images/clothingshop.png",
+    link: "https://clothingshop1.netlify.app/",
+  },
+  {
+    title: "Krishi Manager App",
+    description:
+      "Smart agriculture & farm management dashboard helping farmers track crop yields, seasonal expenses, and real-time net profit analytics.",
+    tags: ["AgriTech", "Analytics", "React App"],
+    year: "2026",
+    client: "AgriTech",
+    type: "Web App",
+    image: "/images/krishi-manager.png",
+    link: "https://farminganalyst.netlify.app/",
+  },
+  {
+    title: "Quantum SEO & Content Strategy",
+    description:
+      "Comprehensive SEO overhaul that increased organic traffic by 250% and improved domain authority from 25 to 55.",
+    tags: ["SEO", "Content", "Analytics"],
+    year: "2026",
+    client: "Quantum SEO",
+    type: "SEO & Marketing",
+    video: "/project.mp4",
   },
 ];
 
@@ -212,7 +228,7 @@ function ContactFormSimple() {
   };
 
   const inputClasses =
-    "w-full bg-[#0e0e0e] border border-card-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-white/30 transition-all text-sm";
+    "w-full bg-glass-bg border border-glass-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-foreground-dim/40 focus:ring-1 focus:ring-foreground-dim/20 transition-all text-sm";
 
   return (
     <form ref={form} onSubmit={handleSubmit} className="space-y-5">
@@ -441,21 +457,29 @@ export default function HomePage() {
           </div>
 
           {/* Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredProjects.map((project, i) => {
               const cardContent = (
                 <>
-                  {/* Image placeholder */}
+                  {/* Image/Video media */}
                   <div className="h-48 bg-gradient-to-br from-accent/10 to-cyan/10 border-b border-card-border flex items-center justify-center overflow-hidden relative">
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent z-[1]" />
-                    {project.image ? (
+                    {project.video ? (
+                      <video
+                        src={project.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-100"
+                      />
+                    ) : project.image ? (
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-100" />
-                    )
-                      : (
-                        <span className="text-4xl font-heading font-bold text-foreground-dim/30">
-                          {project.title.charAt(0)}
-                        </span>
-                      )}
+                    ) : (
+                      <span className="text-4xl font-heading font-bold text-foreground-dim/30">
+                        {project.title.charAt(0)}
+                      </span>
+                    )}
                     {project.link && (
                       <div className="absolute top-4 right-4 z-[3]">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20 text-xs font-medium group-hover:border-accent/60 group-hover:bg-black/90 transition-all shadow-md">
@@ -483,11 +507,11 @@ export default function HomePage() {
                       <span>{project.client}</span>
                     </div>
                     {/* Description */}
-                    <p className="text-foreground-muted text-sm leading-relaxed mb-2">
+                    <p className="text-foreground-muted text-sm leading-relaxed mb-2 line-clamp-2">
                       {project.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <h3 className="font-heading text-xl font-bold group-hover:text-gradient transition-all">
+                      <h3 className="font-heading text-xl font-bold group-hover:text-gradient transition-all line-clamp-1">
                         {project.title}
                       </h3>
                       {project.link && (
