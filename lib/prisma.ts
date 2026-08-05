@@ -9,10 +9,7 @@ function createPrismaClient(): PrismaClient {
   const connectionString = process.env.DATABASE_URL;
 
   if (!connectionString) {
-    console.warn(
-      "⚠️  DATABASE_URL not set — Prisma client created without adapter. DB queries will fail."
-    );
-    // Return a client that will throw on actual queries but allows import/build
+    // DATABASE_URL not configured — return a safe proxy that won't crash the build
     return new Proxy({} as PrismaClient, {
       get(_, prop) {
         if (prop === "$connect" || prop === "$disconnect") {
