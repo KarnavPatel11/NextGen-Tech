@@ -227,12 +227,13 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="contact-phone" className="block text-sm text-foreground-muted mb-2">
-            Phone
+            Phone *
           </label>
           <input
             id="contact-phone"
             name="user_phone"
             type="tel"
+            required
             placeholder="+91 98765 43210"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
