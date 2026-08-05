@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 
-function SubtleParticles({ count = 200 }) {
+function SubtleParticles({ count = 80 }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
 
   const particles = useMemo(() => {
@@ -67,13 +67,13 @@ export default function BackgroundScene() {
     <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 opacity-70 mix-blend-screen">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        dpr={[1, 1]}
+        gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
       >
         <fog attach="fog" args={["#0a0a0f", 5, 15]} />
         <CameraPan />
-        <SubtleParticles count={500} />
-        <Stars radius={100} depth={50} count={5000} factor={5} saturation={0} fade speed={1.5} />
+        <SubtleParticles count={80} />
+        <Stars radius={100} depth={50} count={800} factor={5} saturation={0} fade speed={0.5} />
       </Canvas>
       
       {/* Background Gradient overlay */}

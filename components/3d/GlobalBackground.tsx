@@ -25,8 +25,8 @@ export default function GlobalBackground() {
 
   if (!mounted) return null;
 
-  // Don't render global background on admin routes
-  if (pathname?.startsWith("/admin")) return null;
+  // Don't render global background on admin routes or homepage (which has its own HeroScene)
+  if (pathname === "/" || pathname?.startsWith("/admin")) return null;
 
   // Don't render WebGL on mobile for performance
   if (isMobile) return null;

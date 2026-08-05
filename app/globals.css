@@ -131,9 +131,11 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--card-border);
   border-radius: 20px;
   box-shadow: var(--shadow-card);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .card-base::before {

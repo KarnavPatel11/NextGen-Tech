@@ -77,7 +77,7 @@ function TechCore() {
    ============================================ */
 function OrbitingNodes() {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const count = 18;
+  const count = 10;
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const nodeData = useMemo(() => {
@@ -130,7 +130,7 @@ function OrbitingNodes() {
    ============================================ */
 function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
-  const count = 350;
+  const count = 120;
 
   const [positions] = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -206,8 +206,8 @@ export default function HeroScene() {
       />
       <Canvas
         camera={{ position: [0, 0, 8.5], fov: 55 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        dpr={1}
+        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.8} />

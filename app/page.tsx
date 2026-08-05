@@ -95,7 +95,7 @@ const featuredProjects: FeaturedProject[] = [
     year: "2026",
     client: "NextGen Tech",
     type: "Automation Demo",
-    image: "/images/aiautomation.png",
+    image: "/images/retail-automation.png",
   },
   {
     title: "D2C Storefront System",
@@ -104,7 +104,7 @@ const featuredProjects: FeaturedProject[] = [
     year: "2026",
     client: "NextGen Tech",
     type: "Growth System",
-    image: "/images/project_3.png",
+    image: "/images/d2c-storefront.png",
   },
   {
     title: "TechVista Platform Redesign",
@@ -114,7 +114,7 @@ const featuredProjects: FeaturedProject[] = [
     year: "2026",
     client: "TechVista Inc.",
     type: "Client Build",
-    image: "/images/lqo8ZRIavdu917iJA3Qe51RLPg.png",
+    image: "/images/techvista-platform.png",
   },
 ];
 
