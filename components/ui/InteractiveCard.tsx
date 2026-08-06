@@ -67,13 +67,13 @@ export default function InteractiveCard({
         transformStyle: "preserve-3d",
         perspective: 1000,
       }}
-      className={`card-base group relative overflow-hidden transition-colors duration-300 ${className}`}
+      className={`card-base group relative overflow-hidden rounded-[28px] border border-white/15 border-t-white/35 bg-white/5 backdrop-blur-2xl transition-colors duration-300 ${className}`}
     >
       {/* Interactive cursor spotlight glow */}
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0"
         style={{
-          background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.12), transparent 45%)`,
+          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.18), rgba(255, 255, 255, 0.08) 40%, transparent 70%)`,
         }}
       />
 

@@ -76,7 +76,7 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -84,18 +84,23 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`pricing-card relative ${plan.popular ? "popular" : ""}`}
+              whileHover={{ y: -8 }}
+              className={`relative rounded-[32px] p-8 md:p-10 border backdrop-blur-2xl transition-all duration-300 ${
+                plan.popular
+                  ? "bg-white/10 border-sky-400/50 border-t-white/60 shadow-2xl shadow-sky-500/20"
+                  : "bg-white/5 border-white/15 border-t-white/35 shadow-xl hover:bg-white/10 hover:border-white/30"
+              }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-white text-black text-xs font-semibold px-4 py-1.5 rounded-full">
-                    Popular
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-sky-400 to-indigo-500 text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-lg border border-white/40 tracking-wider uppercase">
+                    Most Popular
                   </span>
                 </div>
               )}
 
               <div className="mb-2">
-                <h3 className="font-heading text-xl font-bold mb-2">
+                <h3 className="font-heading text-2xl font-bold mb-3 text-foreground">
                   {plan.name}
                 </h3>
                 <p className="text-foreground-muted text-sm leading-relaxed mb-6">
@@ -104,11 +109,11 @@ export default function PricingSection() {
               </div>
 
               <div className="mb-8">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
                   {plan.price}
                 </span>
                 {plan.period && (
-                  <span className="text-foreground-muted text-sm ml-2">
+                  <span className="text-foreground-muted text-sm ml-2 font-medium">
                     {plan.period}
                   </span>
                 )}
@@ -123,20 +128,19 @@ export default function PricingSection() {
                 {plan.cta}
               </Link>
 
-              <div className="border-t border-card-border pt-6">
-                <p className="text-xs text-foreground-dim uppercase tracking-wider mb-4">
-                  Plan Detail
+              <div className="border-t border-white/10 pt-6">
+                <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-4">
+                  Included Features
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-3.5">
                   {plan.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-3 text-sm text-foreground-muted"
+                      className="flex items-start gap-3 text-sm text-foreground-muted font-medium"
                     >
-                      <Check
-                        size={16}
-                        className="text-foreground-dim mt-0.5 shrink-0"
-                      />
+                      <div className="p-1 rounded-full bg-sky-400/20 text-sky-300 mt-0.5 shrink-0 border border-sky-400/30">
+                        <Check size={12} />
+                      </div>
                       {feature}
                     </li>
                   ))}

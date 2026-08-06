@@ -332,7 +332,7 @@ export default function HomePage() {
         </div>
 
         {/* Subtle gradient overlay at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-background/85 z-[2] pointer-events-none" />
 
         {/* 3D Hero Scene */}
         <div className="absolute inset-0 z-[1]">
@@ -342,7 +342,7 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-[3] text-center px-6 max-w-5xl mx-auto pt-20">
           <AnimatedSection delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-6 shadow-lg shadow-black/50">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-glass-border bg-glass-bg backdrop-blur-md mb-6 shadow-lg">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-medium text-foreground-muted tracking-wide">AI-First Digital Agency &amp; Software House</span>
             </div>
@@ -350,7 +350,7 @@ export default function HomePage() {
 
           <AnimatedSection delay={0.2}>
             <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[1.05]">
-              Build,
+              <span className="text-foreground">Build,</span>
               <br />
               <span className="text-gradient">Scale, Automate</span>
             </h1>

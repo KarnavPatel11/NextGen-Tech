@@ -153,10 +153,10 @@ export default function ContactForm() {
   };
 
   const inputClasses =
-    "w-full bg-glass-bg border border-glass-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 transition-all";
+    "w-full bg-white/5 backdrop-blur-xl border border-white/20 border-t-white/35 rounded-2xl px-4 py-3.5 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30 transition-all shadow-inner";
 
   const inputErrorClasses =
-    "w-full bg-glass-bg border border-red-500/50 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/30 transition-all";
+    "w-full bg-white/5 backdrop-blur-xl border border-red-500/60 rounded-2xl px-4 py-3.5 text-foreground placeholder:text-foreground-dim focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/30 transition-all shadow-inner";
 
   return (
     <motion.form
