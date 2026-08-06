@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Urbanist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import GlobalBackground from "@/components/3d/GlobalBackground";
@@ -114,6 +115,7 @@ export default function RootLayout({
           <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
